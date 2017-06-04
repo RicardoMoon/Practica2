@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>${titulo}</title>
+    </head>
+    <body>
+        <#if empty == 0>
+            <h1>Listado de estudiantes</h1>
+            <p>No se ha registrado ningun estudiante.</p>
+            <a href="/crearEstudiante">
+                <button type="submit">Registrar Estudiante</button>
+            </a>
+        <#else>
+            <h1>Listado de estudiantes</h1>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Matricula</th>
+                    <th>Telefono</th>
+                    <th>Eliminar</th>
+                    <th>Editar</th>
+                </tr>
+                <#list list as estudiante>
+                    <tr>
+                        <td>${estudiante.nombre}</td>
+                        <td>${estudiante.apellido}</td>
+                        <td>${estudiante.matricula?string("0")}</td>
+                        <td>${estudiante.telefono}</td>
+                        <td><a href="/eliminarEstudiante/${estudiante.matricula?string("0")}">
+                            <button  type="button" onclick="confirmDelete()">Eliminar</button>
+                        </a></td>
+                        <td><a href="/editarEstudiante/${estudiante.matricula?string("0")}">
+                            <button  type="submit">Editar</button>
+                        </a></td>
+                    </tr>
+                </#list>
+            </table>
+            <a href="/crearEstudiante">
+                <button type="submit">Registrar Estudiante</button>
+            </a>
+        </#if>
+    </body>
+</html>
