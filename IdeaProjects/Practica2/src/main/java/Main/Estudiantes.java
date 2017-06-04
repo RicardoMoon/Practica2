@@ -17,6 +17,34 @@ public class Estudiantes {
     }
 
     public void regEstudiante(Estudiante estudiante){
-        student.add(estudiante);
+        getStudent().add(estudiante);
+    }
+
+    public ArrayList<Estudiante> getStudent() {
+        return student;
+    }
+
+    public Estudiante getEstudianteMatricula(int matricula) {
+        Estudiante estudiante = null;
+        for (Estudiante aux: student) {
+            if(aux.getMatricula() == matricula){
+                estudiante = aux;
+            }
+        }
+
+        return estudiante;
+    }
+
+    public void modifEstudiante(int matricula, Estudiante estudiante) {
+        int i = 0;
+
+        for (Estudiante aux: student) {
+            if(aux.getMatricula() == matricula){
+                aux.setApellido(estudiante.getApellido());
+                aux.setMatricula(estudiante.getMatricula());
+                aux.setNombre(estudiante.getNombre());
+                aux.setTelefono(estudiante.getTelefono());
+            }
+        }
     }
 }
